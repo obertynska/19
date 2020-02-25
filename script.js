@@ -72,7 +72,22 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
     const togglePopUp = () => {
-        popUp.style.display = 'block';
+
+
+     popUp.style.display = 'block';
+        popUp.style.opacity = '0';
+
+     let count = 0;
+        const appear = () => {
+            count++;
+            popUp.style.opacity = `.${count}`;
+
+            if (count > 8) {
+                popUp.style.opacity = '1';
+                clearInterval(stop);
+            }
+        };
+        let stop = setInterval(appear, 40);
     };
 
     popUp.addEventListener('click', (event)=>{
@@ -127,4 +142,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
 };
     tabs();
+
+
 });
